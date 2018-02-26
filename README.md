@@ -33,6 +33,16 @@ Now You may add user to dialout group to use fingerprint without sudo rights:
 
 of couse you can use group other than dialout.
 
+3. On 64-bit system You need 32-bit libraries:
+On Ubuntu 16.04:
+```
+Enable the i386 architecture (as root user):
+dpkg --add-architecture i386
+apt-get update
+Install 32-bit libraries (as root user):
+apt-get install libc6:i386 libstdc++6:i386 libpng12-dev:i386 libusb-1.0-4:i386
+```
+
 ### Work with reader based on:
 https://github.com/erikssm/futronics-fingerprint-reader
 
