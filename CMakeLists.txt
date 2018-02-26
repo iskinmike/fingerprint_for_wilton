@@ -1,4 +1,4 @@
-# Copyright 2018, alex at staticlibs.net
+# Copyright 2018, mike at github.com/iskinmike
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,17 +16,11 @@ cmake_minimum_required ( VERSION 2.8.12 )
 
 project ( fingerprint_for_wilton CXX )
 
-set ( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR} CACHE INTERNAL "" )
-set ( CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_CURRENT_BINARY_DIR} CACHE INTERNAL "" )
-set ( CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_CURRENT_BINARY_DIR} CACHE INTERNAL "" )
-
-include_directories ( ${PROJECT_NAME} 
+include_directories ( ${PROJECT_NAME}
         ${CMAKE_SOURCE_DIR}/include
 ) # futronic api to get images from FS80
 
-message(STATUS ${CMAKE_CXX_FLAGS})
-
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -m32 -std=c++11 -g -O0")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -m32 -std=c++11 -O2")
 
 link_directories("/usr/lib/i386-linux-gnu/" "/lib/i386-linux-gnu/")
 
