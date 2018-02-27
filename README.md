@@ -43,6 +43,11 @@ Install 32-bit libraries (as root user):
 apt-get install libc6:i386 libstdc++6:i386 libpng12-dev:i386 libusb-1.0-4:i386
 ```
 
+4. Add 32-bit libraries on CentOs:
+```
+sudo yum instal glibc-devel.i686 libpng.i686 libusb.i686 popt-devel.i686
+```
+
 ### Work with reader based on:
 https://github.com/erikssm/futronics-fingerprint-reader
 
