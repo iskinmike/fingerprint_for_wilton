@@ -16,18 +16,31 @@ cmake_minimum_required ( VERSION 2.8.12 )
 
 project ( fingerprint_for_wilton CXX )
 
+# define system dependent lib path
+set ( LIBPNG_PATH "/lib/i386-linux-gnu/libpng12.so.0")
+if(EXISTS "/etc/redhat-release")
+     set ( LIBPNG_PATH "/usr/lib/libpng15.so.15")
+endif(EXISTS "/etc/redhat-release")
+
 include_directories ( ${PROJECT_NAME}
         ${CMAKE_SOURCE_DIR}/include
 ) # futronic api to get images from FS80
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -m32 -std=c++11 -O2")
 
-link_directories("/usr/lib/i386-linux-gnu/" "/lib/i386-linux-gnu/")
-
-link_libraries ( 
-        ${CMAKE_SOURCE_DIR}/libs/libScanAPI-intel.so # added libscan library for FS80
-        popt
-        /lib/i386-linux-gnu/libpng12.so.0
-        -lpthread)
-
 add_executable(${PROJECT_NAME} src/main.cpp src/ftrScan.cpp src/bitmap_to_png.cpp)
+
+FIND_LIBRARY(PNG_LIBRARY 
+  NAMES png 
+  PATHS ${LINK_DIRS}
+  NO_DEFAULT_PATH
+  NO_CMAKE_PATH
+  )
+
+set(LIBS 
+    ${CMAKE_SOURCE_DIR}/libs/libScanAPI-intel.so # added libscan library for FS80
+    popt
+    ${LIBPNG_PATH}
+    pthread)
+
+target_link_libraries(${PROJECT_NAME} ${LIBS})

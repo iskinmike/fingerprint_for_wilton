@@ -44,7 +44,7 @@ bool BitmapConverter::init()
 }
 
 bool BitmapConverter::convertBitmapToPNGFile(
-        const std::__cxx11::string &filename, unsigned char *bitmap,
+        const std::string &filename, unsigned char *bitmap,
         std::uint32_t width, std::uint32_t height)
 {
     FILE* fp = fopen(filename.c_str(), "wb");
@@ -88,7 +88,7 @@ bool BitmapConverter::convertBitmapToPNGFile(
     return true;
 }
 
-std::__cxx11::string BitmapConverter::getLastError()
+std::string BitmapConverter::getLastError()
 {
     return error;
 }
