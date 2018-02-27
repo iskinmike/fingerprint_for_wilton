@@ -30,13 +30,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -m32 -std=c++11 -O2")
 
 add_executable(${PROJECT_NAME} src/main.cpp src/ftrScan.cpp src/bitmap_to_png.cpp)
 
-FIND_LIBRARY(PNG_LIBRARY 
-  NAMES png 
-  PATHS ${LINK_DIRS}
-  NO_DEFAULT_PATH
-  NO_CMAKE_PATH
-  )
-
 set(LIBS 
     ${CMAKE_SOURCE_DIR}/libs/libScanAPI-intel.so # added libscan library for FS80
     popt
